@@ -42,15 +42,17 @@
 
     <script>
         const pocTableBody = document.querySelector("#pocTable tbody");
-        const sampleProcessingTableBody = document.querySelector("#sampleProcessingTable tbody");
-        const laneProcessingTableBody = document.querySelector("#laneProcessingTable tbody");
-
-        let chipCounter = 1;
-        //let chipCounter = 1;
 
         function initializePOCTable() {
             pocTableBody.innerHTML = "";
-            addRow('pocTable'); // Add one row by default
+            addRow('pocTable');
+            addRow('pocTable');
+            addRow('pocTable');
+            addRow('pocTable');
+            addRow('pocTable');
+            addRow('pocTable');
+            addRow('pocTable');
+            addRow('pocTable'); // Add 8 row by default
         }
 
         function addRow(tableId) {
