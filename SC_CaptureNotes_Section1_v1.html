@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab App</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+    <table id="pocTable">
+        <thead>
+            <tr>
+                <th>Capture Date</th>
+                <th>Sample ID</th>
+                <th>SCAF ID</th>
+                <th>Concentration (cells/mL)</th>
+                <th>Viability</th>
+                <th>Loading Concentration<br>(cells/mL)</th>
+                <th>Recovery Target</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- The first row will be generated dynamically -->
+        </tbody>
+    </table>
+
+    <button onclick="addRow('pocTable')">Add Row</button>
+    <button onclick="removeRow('pocTable')">Remove Row</button><br><br>
+
+    <script>
+        const pocTableBody = document.querySelector("#pocTable tbody");
+        const sampleProcessingTableBody = document.querySelector("#sampleProcessingTable tbody");
+        const laneProcessingTableBody = document.querySelector("#laneProcessingTable tbody");
+
+        let chipCounter = 1;
+        //let chipCounter = 1;
+
+        function initializePOCTable() {
+            pocTableBody.innerHTML = "";
+            addRow('pocTable'); // Add one row by default
+        }
+
+        function addRow(tableId) {
+            const tableBody = document.querySelector(`#${tableId} tbody`);
+            const row = document.createElement("tr");
+            switch (tableId) {
+                case 'pocTable':
+                    row.innerHTML = `
+                        <td><input type="date"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    `;
+            }
+            tableBody.appendChild(row);
+        }
+
+        function removeRow(tableId) {
+            const tableBody = document.querySelector(`#${tableId} tbody`);
+            if (tableBody.rows.length > 1) {
+                tableBody.deleteRow(tableBody.rows.length - 1);
+            }
+        }
+        
+        // Initialize the POC table with one row
+        initializePOCTable();
+    </script>
+</body>
+</html>
